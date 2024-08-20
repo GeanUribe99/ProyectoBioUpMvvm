@@ -4,12 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -18,7 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import pe.idat.appbasicmvvm.auth.AuthViewModel
 import pe.idat.appbasicmvvm.auth.authScreen
-import pe.idat.appbasicmvvm.home.homeScreen
+import pe.idat.appbasicmvvm.home.view.homeScreen
 import pe.idat.appbasicmvvm.routes.AppRoutes
 import pe.idat.appbasicmvvm.ui.theme.AppbasicmvvmTheme
 
@@ -36,11 +31,11 @@ class MainActivity : ComponentActivity() {
                             authScreen(AuthViewModel(), navigation)
                         }
                         composable(AppRoutes.homeScreen.path,
-                            arguments = listOf(navArgument("dni")
+                            arguments = listOf(navArgument("usuario")
                             {type = NavType.StringType} )
                         ){
                             params ->
-                            homeScreen(params.arguments?.getString("dni") ?: "")
+                            homeScreen(params.arguments?.getString("usuario") ?: "")
                         }
                     })
             }
