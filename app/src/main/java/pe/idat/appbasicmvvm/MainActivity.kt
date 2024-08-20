@@ -36,11 +36,11 @@ class MainActivity : ComponentActivity() {
                             authScreen(AuthViewModel(), navigation)
                         }
                         composable(AppRoutes.homeScreen.path,
-                            arguments = listOf(navArgument("id")
-                            {type = NavType.IntType} )
+                            arguments = listOf(navArgument("dni")
+                            {type = NavType.StringType} )
                         ){
                             params ->
-                            homeScreen(params.arguments?.getInt("id") ?: 0)
+                            homeScreen(params.arguments?.getString("dni") ?: "")
                         }
                     })
             }

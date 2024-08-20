@@ -16,7 +16,7 @@ class AuthViewModel : ViewModel() {
         _password.value = password
     }
     fun login(): Boolean{
-       if(usuario.value == "lsalvat" && password.value == "123") {
+       if(usuario.value == "jfercas" && password.value == "123") {
            return true
        }
         return false
