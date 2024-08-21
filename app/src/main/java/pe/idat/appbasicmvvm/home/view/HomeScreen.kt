@@ -13,8 +13,9 @@ import androidx.compose.ui.graphics.Color
 fun homeScreen(usuario: String){
     Box(modifier = Modifier
         .fillMaxSize()
-        .background(Color.Red)){
+        .background(Color.White)){
         Text(text = "Bienvenido $usuario !!",
             modifier = Modifier.align(Alignment.Center))
+
     }
 }

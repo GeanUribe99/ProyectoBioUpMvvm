@@ -40,7 +40,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
-import pe.idat.appbasicmvvm.routes.AppRoutes
+import pe.idat.appbasicmvvm.core.routes.AppRoutes
 
 @Composable
 fun authScreen(authViewModel: AuthViewModel, navController: NavController) {
@@ -127,7 +127,7 @@ fun loginButton(authViewModel: AuthViewModel, state: SnackbarHostState,
     val scope = rememberCoroutineScope()
     Button(onClick = {
         if(authViewModel.login()){
-            navController.navigate(AppRoutes.homeScreen.paramHome(authViewModel.usuario.value.toString()))
+            navController.navigate(AppRoutes.historiadiariaScreen.paramHistoriadiaria(authViewModel.usuario.value.toString()))
         }else{
             scope.launch {
                 state.showSnackbar("Usuario y/o password incorrect",
