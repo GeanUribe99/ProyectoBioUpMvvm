@@ -8,9 +8,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import pe.idat.appbasicmvvm.home.ViewModel.HomeViewModel
 
 @Composable
-fun infouserScreen(usuario: String){
+fun infouserScreen(homeViewModel: HomeViewModel,usuario: String){
     Box(modifier = Modifier
         .fillMaxSize()
         .background(Color.Red)){

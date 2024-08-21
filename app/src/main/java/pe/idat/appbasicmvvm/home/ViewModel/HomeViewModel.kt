@@ -25,7 +25,6 @@ class HomeViewModel @Inject constructor(private val gethistoriadiariaUseCase: Ge
         viewModelScope.launch {
             val response = gethistoriadiariaUseCase()
             _historiadiariaResponse.value = response
-            Log.i("POSTLIST", gethistoriadiariaUseCase().toString())
         }
     }
 

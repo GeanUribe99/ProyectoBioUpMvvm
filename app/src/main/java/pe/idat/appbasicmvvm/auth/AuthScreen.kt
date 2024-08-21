@@ -43,7 +43,7 @@ import kotlinx.coroutines.launch
 import pe.idat.appbasicmvvm.core.routes.AppRoutes
 
 @Composable
-fun authScreen(authViewModel: AuthViewModel, navController: NavController) {
+fun loginScreen(authViewModel: AuthViewModel, navController: NavController) {
     val snackbarHostState = remember {
         SnackbarHostState()
     }

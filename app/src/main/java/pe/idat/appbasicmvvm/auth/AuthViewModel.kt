@@ -16,10 +16,14 @@ class AuthViewModel : ViewModel() {
         _password.value = password
     }
     fun login(): Boolean{
-       if(usuario.value == "jfercas" && password.value == "123") {
-           return true
-       }
-        return false
+       if(usuario.value == "jfercas" && password.value == "123") {return true}
+       else if(usuario.value == "geanc" && password.value == "123"){ return true}
+       else if(usuario.value == "jcasa" && password.value == "123"){ return true}
+       else if(usuario.value == "jgalan" && password.value == "123"){ return true}
+       else if(usuario.value == "spaytan" && password.value == "123"){ return true}
+       else if(usuario.value == "admin" && password.value == "123"){ return true}
+       else{return false}
+
     }
 
 }
