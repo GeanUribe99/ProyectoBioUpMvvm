@@ -17,6 +17,7 @@ import pe.idat.appbasicmvvm.auth.AuthViewModel
 import pe.idat.appbasicmvvm.auth.loginScreen
 import pe.idat.appbasicmvvm.core.routes.AppRoutes
 import pe.idat.appbasicmvvm.home.ViewModel.HomeViewModel
+
 import pe.idat.appbasicmvvm.home.view.homeScreen
 
 import pe.idat.appbasicmvvm.ui.theme.AppbasicmvvmTheme
@@ -31,13 +32,24 @@ class MainActivity : ComponentActivity() {
         setContent {
             AppbasicmvvmTheme {
                 val navigation = rememberNavController()
-                NavHost(navController = navigation, startDestination = AppRoutes.loginScreen.path,
+                NavHost(navController = navigation,
+                    startDestination = AppRoutes.loginScreen.path,
                     builder = {
                         composable(AppRoutes.loginScreen.path){
                             loginScreen(authViewModel, navigation)
                         }
+                        /*composable(AppRoutes.historiadiariaScreen.path){
+                            historiadiariaScreen(homeViewModel, navigation)
+                        }
+                        composable(AppRoutes.historiaclinicaScreen.path){
+                            historiaclinicaScreen(homeViewModel, navigation)
+                        }
+                        composable(AppRoutes.historiadiariaScreen.path){
+                            loginScreen(homeViewModel, navigation)
+                        }*/
                         composable(
-                            AppRoutes.historiadiariaScreen.path,
+                            AppRoutes.homeScreen.path,
+                            //AppRoutes.historiadiariaScreen.path,
                             arguments = listOf(navArgument("usuario")
                             {type = NavType.StringType} )
                         ){
@@ -79,3 +91,28 @@ fun GreetingPreview() {
 
     }
 }
+/*
+@Composable
+fun MainNavHost(
+    loginViewModel: AuthViewModel,
+    homeViewModel: HomeViewModel
+){
+    val navigation = rememberNavController()
+    NavHost(navController = navigation, startDestination = Ruta.loginScreen.path
+    ) {
+        composable(Ruta.loginScreen.path) {
+            loginScreen(loginViewModel, navigation)
+        }
+        composable(Ruta.registroScreen.path) {
+            registroScreen(registroViewModel, navigation)
+        }
+        composable(Ruta.homeScreen.path) {
+            homeScreen(homeViewModel, navigation)
+        }
+        composable(Ruta.reservarcitasScreen.path) {
+            ReservarCitasScreen(context = LocalContext.current)
+        }
+    }
+}
+
+*/

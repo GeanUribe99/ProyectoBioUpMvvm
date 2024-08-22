@@ -20,11 +20,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import pe.idat.appbasicmvvm.home.ViewModel.HomeViewModel
 import pe.idat.appbasicmvvm.home.data.network.response.HistoriaDiariaResponse
 
 @Composable
-fun historiadiariaScreen(homeViewModel: HomeViewModel, usuario: String){
+fun historiadiariaScreen(homeViewModel: HomeViewModel){
     val historiadiaria by homeViewModel.historiadiariaResponse.observeAsState(emptyList())
     //Column {
     //    Text(text = "Valor de prueba $usuario")
@@ -56,17 +57,18 @@ fun historiadiariaItem(historiadiaria: HistoriaDiariaResponse) {
         ) {
             Spacer(modifier = Modifier.width(16.dp))
             Column {
-                    //Row {
-                    //    Text(text = "Fecha de Creacion ${historiadiaria.Dia}/${historiadiaria.Mes}/${historiadiaria.Anio}", fontWeight = FontWeight.Bold)
-                    //}
-                    //Text(text = "Acompañante: ${historiadiaria.Acompaniante}", color = Color.Gray)
-                    //Text(text = "Peso: ${historiadiaria.Peso}", fontWeight = FontWeight.Bold)
-                    //Text(text = "Temperatura: ${historiadiaria.Temperatura}", color = Color.Gray)
-                    //Text(text = "Presion: ${historiadiaria.Presion}", color = Color.Gray)
-                    //Text(text = "Diagnostico: ${historiadiaria.Diagnostico}", color = Color.Gray)
-                    //Text(text = "Tratamiento: ${historiadiaria.Tratamiento}", color = Color.Gray)
-                    //Text(text = "Doctor: ${historiadiaria.Doctor}", fontWeight = FontWeight.Bold)
-
+                    /*
+                    Row {
+                        Text(text = "Fecha de Creacion ${historiadiaria.Dia}/${historiadiaria.Mes}/${historiadiaria.Anio}", fontWeight = FontWeight.Bold)
+                    }
+                    Text(text = "Acompañante: ${historiadiaria.Acompaniante}", color = Color.Gray)
+                    Text(text = "Peso: ${historiadiaria.Peso}", fontWeight = FontWeight.Bold)
+                    Text(text = "Temperatura: ${historiadiaria.Temperatura}", color = Color.Gray)
+                    Text(text = "Presion: ${historiadiaria.Presion}", color = Color.Gray)
+                    Text(text = "Diagnostico: ${historiadiaria.Diagnostico}", color = Color.Gray)
+                    Text(text = "Tratamiento: ${historiadiaria.Tratamiento}", color = Color.Gray)
+                    Text(text = "Doctor: ${historiadiaria.Doctor}", fontWeight = FontWeight.Bold)
+                    */
 
                     Text(text = "Acompañante: ${historiadiaria.userId}", color = Color.Gray)
                     Text(text = "Peso: ${historiadiaria.id}", fontWeight = FontWeight.Bold)

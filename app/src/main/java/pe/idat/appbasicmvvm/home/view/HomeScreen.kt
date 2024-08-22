@@ -1,5 +1,6 @@
 package pe.idat.appbasicmvvm.home.view
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import pe.idat.appbasicmvvm.R
 import androidx.compose.foundation.background
@@ -71,8 +72,12 @@ fun homeScreen(homeViewModel: HomeViewModel,navPrincipal: NavController, usuario
                     drawerState.close()
                 }
                 when (item.titulo) {
-                    "Informacion del usuario" -> navController.navigate(AppRoutes.infouserScreen.path)
+                    "Informacion de Usuario" -> navController.navigate(AppRoutes.infouserScreen.path)
                     "Historial Clinico" -> navController.navigate(AppRoutes.historiaclinicaScreen.path)
+                    "Historias Diarias" -> navController.navigate(AppRoutes.historiadiariaScreen.path)
+                    /*"Mapas" -> navController.navigate(AppRoutes.historiaclinicaScreen.path)
+                    "Citas Médicas" -> navController.navigate(AppRoutes.historiaclinicaScreen.path)*/
+
                 }
             }, usuario)
         },
@@ -104,12 +109,12 @@ fun homeScreen(homeViewModel: HomeViewModel,navPrincipal: NavController, usuario
                     })
                 NavHost(navController = navController,
                     startDestination = AppRoutes.infouserScreen.path) {
-                    //startDestination = AppRoutes.historiadiariaScreen.path) {
                     composable(AppRoutes.infouserScreen.path){ infouserScreen(homeViewModel,usuario)}
-                    composable(AppRoutes.historiaclinicaScreen.path){ historiadiariaScreen(homeViewModel,usuario)}
-                    composable(AppRoutes.historiadiariaScreen.path){ historiadiariaScreen(homeViewModel,usuario)}
-                    composable(AppRoutes.mapasScreen.path){ historiaclinicaScreen(homeViewModel,usuario)}
-                    composable(AppRoutes.citasScreen.path){ historiaclinicaScreen(homeViewModel,usuario)}
+                    composable(AppRoutes.historiaclinicaScreen.path){ historiaclinicaScreen(homeViewModel, usuario) }
+                    composable(AppRoutes.historiadiariaScreen.path){ historiadiariaScreen(homeViewModel)}
+                    //composable(AppRoutes.citasScreen.path){ citasScreen(it.context)}
+                    composable(AppRoutes.mapasScreen.path){ mapasScreen()}
+
                 }
             }
         }
@@ -175,7 +180,7 @@ fun cabeceraMenu(usuario: String) {
 fun opcionesMenu(): List<MenuItem> {
     return listOf(
         MenuItem(Icons.Default.Person, "Informacion de Usuario"),
-        MenuItem(Icons.Default.MedicalInformation, "Historiasl Clinico"),
+        MenuItem(Icons.Default.MedicalInformation, "Historial Clinico"),
         MenuItem(Icons.Default.Pageview, "Historias Diarias"),
         MenuItem(Icons.Default.Map, "Mapas"),
         MenuItem(Icons.Default.DateRange, "Citas Médicas")

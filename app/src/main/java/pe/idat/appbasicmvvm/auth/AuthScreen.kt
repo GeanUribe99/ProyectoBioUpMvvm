@@ -127,7 +127,7 @@ fun loginButton(authViewModel: AuthViewModel, state: SnackbarHostState,
     val scope = rememberCoroutineScope()
     Button(onClick = {
         if(authViewModel.login()){
-            navController.navigate(AppRoutes.historiadiariaScreen.paramHistoriadiaria(authViewModel.usuario.value.toString()))
+            navController.navigate(AppRoutes.homeScreen.paramHome(authViewModel.usuario.value.toString()))
         }else{
             scope.launch {
                 state.showSnackbar("Usuario y/o password incorrect",

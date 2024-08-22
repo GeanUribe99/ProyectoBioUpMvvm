@@ -71,6 +71,9 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation("com.google.android.gms:play-services-maps:18.1.0") // Google Maps Services
+    implementation("com.google.accompanist:accompanist-permissions:0.30.1") // Permissions
+    implementation("com.google.maps.android:maps-compose:2.5.3") // Maps Compose Support
     kapt(libs.hilt.android.compiler)
     kapt(libs.androidx.room.compiler)
     testImplementation(libs.junit)
