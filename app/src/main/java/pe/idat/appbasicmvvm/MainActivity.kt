@@ -39,9 +39,9 @@ class MainActivity : ComponentActivity() {
                         composable(AppRoutes.loginScreen.path){
                             loginScreen(authViewModel, navigation)
                         }
-                        composable(AppRoutes.historiadiariaScreen.path){
+                        /*composable(AppRoutes.historiadiariaScreen.path){
                             historiadiariaScreen(homeViewModel)
-                        }
+                        }*/
                         /*
                         composable(AppRoutes.historiaclinicaScreen.path){
                             historiaclinicaScreen(homeViewModel, navigation)
