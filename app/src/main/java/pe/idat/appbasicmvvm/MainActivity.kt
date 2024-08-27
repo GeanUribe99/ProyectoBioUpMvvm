@@ -17,6 +17,7 @@ import pe.idat.appbasicmvvm.auth.AuthViewModel
 import pe.idat.appbasicmvvm.auth.loginScreen
 import pe.idat.appbasicmvvm.core.routes.AppRoutes
 import pe.idat.appbasicmvvm.home.ViewModel.HomeViewModel
+import pe.idat.appbasicmvvm.home.view.historiadiariaScreen
 
 import pe.idat.appbasicmvvm.home.view.homeScreen
 
@@ -38,9 +39,10 @@ class MainActivity : ComponentActivity() {
                         composable(AppRoutes.loginScreen.path){
                             loginScreen(authViewModel, navigation)
                         }
-                        /*composable(AppRoutes.historiadiariaScreen.path){
-                            historiadiariaScreen(homeViewModel, navigation)
+                        composable(AppRoutes.historiadiariaScreen.path){
+                            historiadiariaScreen(homeViewModel)
                         }
+                        /*
                         composable(AppRoutes.historiaclinicaScreen.path){
                             historiaclinicaScreen(homeViewModel, navigation)
                         }
