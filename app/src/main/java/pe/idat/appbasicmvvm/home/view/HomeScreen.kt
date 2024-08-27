@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -75,8 +76,8 @@ fun homeScreen(homeViewModel: HomeViewModel,navPrincipal: NavController, usuario
                     "Informacion de Usuario" -> navController.navigate(AppRoutes.infouserScreen.path)
                     "Historial Clinico" -> navController.navigate(AppRoutes.historiaclinicaScreen.path)
                     "Historias Diarias" -> navController.navigate(AppRoutes.historiadiariaScreen.path)
-                    /*"Mapas" -> navController.navigate(AppRoutes.historiaclinicaScreen.path)
-                    "Citas Médicas" -> navController.navigate(AppRoutes.historiaclinicaScreen.path)*/
+                    "Mapas" -> navController.navigate(AppRoutes.mapasScreen.path)
+                    /*"Citas Médicas" -> navController.navigate(AppRoutes.historiaclinicaScreen.path)*/
 
                 }
             }, usuario)
@@ -129,7 +130,7 @@ fun drawerContent(
 ) {
     Column(
         Modifier
-            .fillMaxSize()
+            .fillMaxHeight().fillMaxWidth(0.87f)
             .background(Color.White)
             .systemBarsPadding()
     ) {
