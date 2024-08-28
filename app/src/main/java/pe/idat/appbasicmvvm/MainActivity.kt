@@ -12,11 +12,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import androidx.room.Room
 import dagger.hilt.android.AndroidEntryPoint
 import pe.idat.appbasicmvvm.auth.AuthViewModel
 import pe.idat.appbasicmvvm.auth.loginScreen
+import pe.idat.appbasicmvvm.core.bd.DB
 import pe.idat.appbasicmvvm.core.routes.AppRoutes
+import pe.idat.appbasicmvvm.home.ViewModel.AlbunesViewModel
 import pe.idat.appbasicmvvm.home.ViewModel.HomeViewModel
+import pe.idat.appbasicmvvm.home.view.AlbumesScreen
 import pe.idat.appbasicmvvm.home.view.historiadiariaScreen
 
 import pe.idat.appbasicmvvm.home.view.homeScreen
@@ -32,6 +36,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AppbasicmvvmTheme {
+
+
                 val navigation = rememberNavController()
                 NavHost(navController = navigation,
                     startDestination = AppRoutes.loginScreen.path,
@@ -39,47 +45,16 @@ class MainActivity : ComponentActivity() {
                         composable(AppRoutes.loginScreen.path){
                             loginScreen(authViewModel, navigation)
                         }
-                        /*composable(AppRoutes.historiadiariaScreen.path){
-                            historiadiariaScreen(homeViewModel)
-                        }*/
-                        /*
-                        composable(AppRoutes.historiaclinicaScreen.path){
-                            historiaclinicaScreen(homeViewModel, navigation)
-                        }
-                        composable(AppRoutes.historiadiariaScreen.path){
-                            loginScreen(homeViewModel, navigation)
-                        }*/
                         composable(
                             AppRoutes.homeScreen.path,
-                            //AppRoutes.historiadiariaScreen.path,
                             arguments = listOf(navArgument("usuario")
                             {type = NavType.StringType} )
                         ){
                                 params ->
                             homeScreen(homeViewModel,navigation,params.arguments?.getString("usuario") ?: "")
                         }
+
                     })
-
-
-                /*
-                val navigation = rememberNavController()
-                    NavHost(navController = navigation,
-                        startDestination = AppRoutes.loginScreen.path,
-                        builder = {
-                            composable(AppRoutes.loginScreen.path){
-                                authScreen(AuthViewModel(), navigation)
-                            }
-                            composable(
-                                AppRoutes.historiadiariaScreen.path,
-                                arguments = listOf(navArgument("usuario")
-                                {type = NavType.StringType} )
-                            ){
-                                params ->
-                                historiadiariaScreen(homeViewModel,params.arguments?.getString("usuario") ?: ""
-                                )
-                            }
-                        })
-                */
             }
         }
     }

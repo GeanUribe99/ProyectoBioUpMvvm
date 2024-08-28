@@ -1,6 +1,5 @@
 package pe.idat.appbasicmvvm.home.ViewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,34 +7,19 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import pe.idat.appbasicmvvm.home.data.network.response.AlbunesResponse
-import pe.idat.appbasicmvvm.home.domain.GetHistoriaDiariaUseCase
 import pe.idat.appbasicmvvm.home.data.network.response.HistoriaDiariaResponse
 import pe.idat.appbasicmvvm.home.domain.GetAlbunesCase
+import pe.idat.appbasicmvvm.home.domain.GetHistoriaDiariaUseCase
 import javax.inject.Inject
-
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val gethistoriadiariaUseCase: GetHistoriaDiariaUseCase,private val getAlbunesCase: GetAlbunesCase) : ViewModel() {
-
-    private val _historiadiariaResponse = MutableLiveData<List<HistoriaDiariaResponse>>()
-    val historiadiariaResponse: LiveData<List<HistoriaDiariaResponse>> = _historiadiariaResponse
-
-    init {
-        listarHds()
-        listarPhotos()
-    }
-
-    fun listarHds() {
-        viewModelScope.launch {
-            val response = gethistoriadiariaUseCase()
-            _historiadiariaResponse.value = response
-        }
-    }
-
+class AlbunesViewModel @Inject constructor(private val getAlbunesCase: GetAlbunesCase) : ViewModel()  {
 
     private val _albunesResponse = MutableLiveData<List<AlbunesResponse>>()
     val albunesResponse: LiveData<List<AlbunesResponse>> = _albunesResponse
 
-
+    init {
+        listarPhotos()
+    }
 
     fun listarPhotos() {
         viewModelScope.launch {

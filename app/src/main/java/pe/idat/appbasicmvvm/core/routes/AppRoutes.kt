@@ -10,7 +10,7 @@ sealed class AppRoutes(val path: String) {
     /*{
         fun paramInfouser(usuario: String) = "infouserScreen/$usuario"
     }*/
-    object historiaclinicaScreen: AppRoutes("historiaclinicaScreen/{usuario}")
+    object historiaclinicaScreen: AppRoutes("AlbumesScreen")
     /*{
         fun paramHistoriaclinica(usuario: String) = "historiaclinicaScreen/$usuario"
     }*/
@@ -18,7 +18,7 @@ sealed class AppRoutes(val path: String) {
     /*{
         fun paramHistoriadiaria(usuario: String) = "historiadiariaScreen/$usuario"
     }*/
-    object mapasScreen: AppRoutes("mapasScreen")
+    //object mapasScreen: AppRoutes("mapasScreen")
 
     object citasScreen: AppRoutes("citasScreen/{usuario}")
     /*{

@@ -74,6 +74,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:18.1.0") // Google Maps Services
     implementation("com.google.accompanist:accompanist-permissions:0.30.1") // Permissions
     implementation("com.google.maps.android:maps-compose:2.5.3") // Maps Compose Support
+    implementation("io.coil-kt:coil-compose:2.1.0") //imagess async
     kapt(libs.hilt.android.compiler)
     kapt(libs.androidx.room.compiler)
     testImplementation(libs.junit)

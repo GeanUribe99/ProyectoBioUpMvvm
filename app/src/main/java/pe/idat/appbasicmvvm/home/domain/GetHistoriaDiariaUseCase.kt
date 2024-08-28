@@ -9,4 +9,5 @@ class GetHistoriaDiariaUseCase @Inject constructor( private val bioupRepository:
         return bioupRepository.listarHds()
     }
 
+
 }

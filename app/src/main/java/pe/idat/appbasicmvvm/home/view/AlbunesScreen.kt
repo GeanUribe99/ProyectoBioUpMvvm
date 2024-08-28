@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -20,30 +21,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import pe.idat.appbasicmvvm.home.ViewModel.AlbunesViewModel
 import pe.idat.appbasicmvvm.home.ViewModel.HomeViewModel
+import pe.idat.appbasicmvvm.home.data.network.response.AlbunesResponse
 import pe.idat.appbasicmvvm.home.data.network.response.HistoriaDiariaResponse
-
+import coil.compose.AsyncImage
 @Composable
-fun historiadiariaScreen(homeViewModel: HomeViewModel){
-    val historiadiaria by homeViewModel.historiadiariaResponse.observeAsState(emptyList())
-    //Column {
-    //    Text(text = "Valor de prueba $usuario")
-    //}
-    LazyColumn{
-      items(historiadiaria){
-            historiadiaria -> historiadiariaItem(historiadiaria = historiadiaria)
+fun AlbumesScreen(homeViewModel: HomeViewModel){
+    val albumes by homeViewModel.albunesResponse.observeAsState(emptyList())
+
+    LazyRow{
+        items(albumes){
+                albumes -> albumesItem(albumes = albumes)
         }
     }
-
 }
 
 @Composable
-fun historiadiariaItem(historiadiaria: HistoriaDiariaResponse) {
+fun albumesItem(albumes: AlbunesResponse) {
     Card(elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
         shape = MaterialTheme.shapes.large,
         modifier = Modifier
-            .fillMaxWidth()
+            .width(250.dp)
             .padding(5.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
@@ -57,12 +56,18 @@ fun historiadiariaItem(historiadiaria: HistoriaDiariaResponse) {
         ) {
             Spacer(modifier = Modifier.width(16.dp))
             Column {
-
-
-                    Text(text = "Acompañante: ${historiadiaria.userId}", color = Color.Gray)
-                    Text(text = "Peso: ${historiadiaria.id}", fontWeight = FontWeight.Bold)
-                    Text(text = "Temperatura: ${historiadiaria.title}", color = Color.Gray)
-                    Text(text = "Presion: ${historiadiaria.body}", color = Color.Gray)
+                Text(text = "AlbumId: ${albumes.albumId}", color = Color.Gray)
+                Text(text = "Id: ${albumes.id}", fontWeight = FontWeight.Bold)
+                Text(text = "Title: ${albumes.title}", color = Color.Gray)
+                Text(text = "Url: ${albumes.url}", color = Color.Gray)
+                Spacer(modifier = Modifier.width(8.dp))
+                AsyncImage(
+                    model = albumes.thumbnailUrl,
+                    contentDescription = "Thumbnail Url",
+                    modifier = Modifier
+                        .padding(bottom = 8.dp)
+                        .fillMaxWidth()
+                )
 
             }
         }

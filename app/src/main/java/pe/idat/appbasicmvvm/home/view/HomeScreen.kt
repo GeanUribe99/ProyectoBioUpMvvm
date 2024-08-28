@@ -54,6 +54,7 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import pe.idat.appbasicmvvm.core.routes.AppRoutes
 import pe.idat.appbasicmvvm.core.utils.MenuItem
+import pe.idat.appbasicmvvm.home.ViewModel.AlbunesViewModel
 import pe.idat.appbasicmvvm.home.ViewModel.HomeViewModel
 
 
@@ -76,7 +77,7 @@ fun homeScreen(homeViewModel: HomeViewModel,navPrincipal: NavController, usuario
                     "Informacion de Usuario" -> navController.navigate(AppRoutes.infouserScreen.path)
                     "Historial Clinico" -> navController.navigate(AppRoutes.historiaclinicaScreen.path)
                     "Historias Diarias" -> navController.navigate(AppRoutes.historiadiariaScreen.path)
-                    "Mapas" -> navController.navigate(AppRoutes.mapasScreen.path)
+                    //"Mapas" -> navController.navigate(AppRoutes.mapasScreen.path)
                     /*"Citas Médicas" -> navController.navigate(AppRoutes.historiaclinicaScreen.path)*/
 
                 }
@@ -111,10 +112,10 @@ fun homeScreen(homeViewModel: HomeViewModel,navPrincipal: NavController, usuario
                 NavHost(navController = navController,
                     startDestination = AppRoutes.infouserScreen.path) {
                     composable(AppRoutes.infouserScreen.path){ infouserScreen(homeViewModel,usuario)}
-                    composable(AppRoutes.historiaclinicaScreen.path){ historiaclinicaScreen(homeViewModel, usuario) }
+                    composable(AppRoutes.historiaclinicaScreen.path){ AlbumesScreen(homeViewModel)}
                     composable(AppRoutes.historiadiariaScreen.path){ historiadiariaScreen(homeViewModel)}
                     //composable(AppRoutes.citasScreen.path){ citasScreen(it.context)}
-                    composable(AppRoutes.mapasScreen.path){ mapasScreen()}
+                    //composable(AppRoutes.mapasScreen.path){ mapasScreen()}
 
                 }
             }
