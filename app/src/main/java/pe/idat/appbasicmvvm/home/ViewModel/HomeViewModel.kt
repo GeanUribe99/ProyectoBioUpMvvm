@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import pe.idat.appbasicmvvm.auth.PacienteRepository
+import pe.idat.appbasicmvvm.core.bd.PacienteEntity
 import pe.idat.appbasicmvvm.home.data.network.response.AlbunesResponse
 import pe.idat.appbasicmvvm.home.domain.GetHistoriaDiariaUseCase
 import pe.idat.appbasicmvvm.home.data.network.response.HistoriaDiariaResponse
@@ -14,10 +16,12 @@ import pe.idat.appbasicmvvm.home.domain.GetAlbunesCase
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val gethistoriadiariaUseCase: GetHistoriaDiariaUseCase,private val getAlbunesCase: GetAlbunesCase) : ViewModel() {
+class HomeViewModel @Inject constructor(private val gethistoriadiariaUseCase: GetHistoriaDiariaUseCase,private val getAlbunesCase: GetAlbunesCase,private val obtenerPaciente : PacienteRepository) : ViewModel() {
 
     private val _historiadiariaResponse = MutableLiveData<List<HistoriaDiariaResponse>>()
     val historiadiariaResponse: LiveData<List<HistoriaDiariaResponse>> = _historiadiariaResponse
+
+    val paciente : LiveData<PacienteEntity> = obtenerPaciente.obtenerpacientes()
 
     init {
         listarHds()

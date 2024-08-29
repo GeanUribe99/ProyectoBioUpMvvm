@@ -2,6 +2,7 @@ package pe.idat.appbasicmvvm.home.data.network.service
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import pe.idat.appbasicmvvm.core.bd.PacienteEntity
 import pe.idat.appbasicmvvm.core.retrofit.BioupcClient
 import pe.idat.appbasicmvvm.home.data.network.response.AlbunesResponse
 import pe.idat.appbasicmvvm.home.data.network.response.HistoriaDiariaResponse
@@ -22,4 +23,5 @@ class BioupService @Inject constructor(private val bioupcClient: BioupcClient) {
             response.body()!!
         }
     }
+
 }

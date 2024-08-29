@@ -27,9 +27,6 @@ import pe.idat.appbasicmvvm.home.data.network.response.HistoriaDiariaResponse
 @Composable
 fun historiadiariaScreen(homeViewModel: HomeViewModel){
     val historiadiaria by homeViewModel.historiadiariaResponse.observeAsState(emptyList())
-    //Column {
-    //    Text(text = "Valor de prueba $usuario")
-    //}
     LazyColumn{
       items(historiadiaria){
             historiadiaria -> historiadiariaItem(historiadiaria = historiadiaria)
@@ -58,11 +55,10 @@ fun historiadiariaItem(historiadiaria: HistoriaDiariaResponse) {
             Spacer(modifier = Modifier.width(16.dp))
             Column {
 
-
-                    Text(text = "Acompañante: ${historiadiaria.userId}", color = Color.Gray)
-                    Text(text = "Peso: ${historiadiaria.id}", fontWeight = FontWeight.Bold)
-                    Text(text = "Temperatura: ${historiadiaria.title}", color = Color.Gray)
-                    Text(text = "Presion: ${historiadiaria.body}", color = Color.Gray)
+                    Text(text = "UserId: ${historiadiaria.userId}", color = Color.Gray)
+                    Text(text = "Id: ${historiadiaria.id}", color = Color.Gray)
+                    Text(text = "Title: ${historiadiaria.title}", color = Color.Gray)
+                    Text(text = "Completed: ${historiadiaria.completed}", color = Color.Gray)
 
             }
         }

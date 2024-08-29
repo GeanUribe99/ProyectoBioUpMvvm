@@ -7,8 +7,7 @@ import retrofit2.http.GET
 
 interface BioupcClient {
 
-    @GET("/posts")
-    //@GET("/eS0uhn/historiadiaria")
+    @GET("/todos")
     suspend fun listarHds() : Response<List<HistoriaDiariaResponse>>
 
     @GET("/photos")

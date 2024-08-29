@@ -74,14 +74,14 @@ fun homeScreen(homeViewModel: HomeViewModel,navPrincipal: NavController, usuario
                     drawerState.close()
                 }
                 when (item.titulo) {
-                    "Informacion de Usuario" -> navController.navigate(AppRoutes.infouserScreen.path)
-                    "Historial Clinico" -> navController.navigate(AppRoutes.historiaclinicaScreen.path)
-                    "Historias Diarias" -> navController.navigate(AppRoutes.historiadiariaScreen.path)
+                    //"Informacion de Usuario" -> navController.navigate(AppRoutes.infouserScreen.path)
+                    "Fotos Pares" -> navController.navigate(AppRoutes.historiaclinicaScreen.path)
+                    "Todos" -> navController.navigate(AppRoutes.historiadiariaScreen.path)
                     //"Mapas" -> navController.navigate(AppRoutes.mapasScreen.path)
                     /*"Citas Médicas" -> navController.navigate(AppRoutes.historiaclinicaScreen.path)*/
 
                 }
-            }, usuario)
+            }, homeViewModel)
         },
         content = {
             Column {
@@ -89,7 +89,7 @@ fun homeScreen(homeViewModel: HomeViewModel,navPrincipal: NavController, usuario
                     containerColor = Color.LightGray,
                     titleContentColor = Color.Black
                 ),
-                    title = { Text(text = "BioUp") },
+                    title = { Text(text = "AppA19107903") },
                     navigationIcon = {
                         IconButton(onClick = {
                             coroutineScope.launch {
@@ -110,13 +110,11 @@ fun homeScreen(homeViewModel: HomeViewModel,navPrincipal: NavController, usuario
                         }
                     })
                 NavHost(navController = navController,
-                    startDestination = AppRoutes.infouserScreen.path) {
-                    composable(AppRoutes.infouserScreen.path){ infouserScreen(homeViewModel,usuario)}
+                    //startDestination = AppRoutes.infouserScreen.path) {
+                    startDestination = AppRoutes.historiadiariaScreen.path) {
+                    //composable(AppRoutes.infouserScreen.path){ infouserScreen(homeViewModel,usuario)}
+                    composable(AppRoutes.historiadiariaScreen.path){ historiadiariaScreen(homeViewModel) }
                     composable(AppRoutes.historiaclinicaScreen.path){ AlbumesScreen(homeViewModel)}
-                    composable(AppRoutes.historiadiariaScreen.path){ historiadiariaScreen(homeViewModel)}
-                    //composable(AppRoutes.citasScreen.path){ citasScreen(it.context)}
-                    //composable(AppRoutes.mapasScreen.path){ mapasScreen()}
-
                 }
             }
         }
@@ -127,15 +125,16 @@ fun homeScreen(homeViewModel: HomeViewModel,navPrincipal: NavController, usuario
 fun drawerContent(
     items: List<MenuItem>,
     onItemClick: (MenuItem) -> Unit,
-    usuario: String
+    homeViewModel: HomeViewModel
 ) {
     Column(
         Modifier
-            .fillMaxHeight().fillMaxWidth(0.87f)
+            .fillMaxHeight()
+            .fillMaxWidth(0.87f)
             .background(Color.White)
             .systemBarsPadding()
     ) {
-        cabeceraMenu(usuario)
+        cabeceraMenu(homeViewModel)
         Spacer(modifier = Modifier.height(8.dp))
         items.forEach { item ->
             drawerMenuItem(item, onItemClick)
@@ -157,23 +156,17 @@ fun drawerMenuItem(item: MenuItem, onItemClick: (MenuItem) -> Unit) {
 }
 
 @Composable
-fun cabeceraMenu(usuario: String) {
+fun cabeceraMenu(homeViewModel: HomeViewModel) {
+    val paciente by homeViewModel.paciente.observeAsState()
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        /*Image(
-            painter = painterResource(id = R.drawable.imgperfil),
-            contentDescription = "logo",
-            modifier = Modifier
-                .size(64.dp)
-                .clip(CircleShape)
-        )*/
         Spacer(modifier = Modifier.width(16.dp))
         Column {
-                Text(text = usuario, fontWeight = FontWeight.Bold)
+            paciente?.let { Text(text = it.nombreapellido, fontWeight = FontWeight.Bold) }
             }
 
         }
@@ -181,10 +174,10 @@ fun cabeceraMenu(usuario: String) {
 
 fun opcionesMenu(): List<MenuItem> {
     return listOf(
-        MenuItem(Icons.Default.Person, "Informacion de Usuario"),
-        MenuItem(Icons.Default.MedicalInformation, "Historial Clinico"),
-        MenuItem(Icons.Default.Pageview, "Historias Diarias"),
-        MenuItem(Icons.Default.Map, "Mapas"),
-        MenuItem(Icons.Default.DateRange, "Citas Médicas")
+       // MenuItem(Icons.Default.Person, "Informacion de Usuario"),
+        MenuItem(Icons.Default.MedicalInformation, "Fotos Pares"),
+        MenuItem(Icons.Default.Pageview, "Todos"),
+        //MenuItem(Icons.Default.Map, "Mapas"),
+        //MenuItem(Icons.Default.DateRange, "Citas Médicas")
     )
 }

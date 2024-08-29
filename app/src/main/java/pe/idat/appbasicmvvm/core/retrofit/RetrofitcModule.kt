@@ -16,7 +16,6 @@ class RetrofitcModule {
     @Provides
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            //.baseUrl("https://retoolapi.dev/eS0uhn/historiadiaria/")
             .baseUrl("https://jsonplaceholder.typicode.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
